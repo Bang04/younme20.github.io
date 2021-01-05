@@ -86,80 +86,88 @@ share: false
     String str = "abc"; //여러 문자(0~n개)를 저장할 변수의 타입은 String 으로 한다.
 ```
 
-#### 3. 상수와 리터럴
-    상수는 변수와 마찬가지로 '값을 저장할 수 있는 공간'이지만 변수와 달리 한번 값을 저장하면 다른 값으로 변경할 수 없다. 단지 변수 타입 앞에 final을 붙여준다.
+
+## 3. 리터럴(literal)
+--- 
+
+  원래 12,123,3.14, 'A' 와 같은 값들이 '상수'인데 프로그래밍에서는 상수를 값으  한 번 저장하면 변경할 수 없는 저장공간으로 정의하기때문에 위의 상수와 다르게 불러야만 해서 **리터럴**이라는 용어를 사용한다. 
+
+
+  - **변수(Variable)**  하나의 값을 저장하기 위한 공간
+
+  - **상수(Constant)**  값을 한번만 저장할 수 있는 공간
+
+  - **리터럴(Literal)**  그 자체로 값을 의미하는 것
+  
 
 ```css
     final int MAX_VALUE; //정수형 상수 선언
     MAX_VALUE = 100;     //처음 값 저장
-    MAX_VALUE = 200;     //ERROE, 상수에 저장돈 값을 변경할 수 없음
+    MAX_VALUE = 200;     //에러, 상수에 저장돈 값을 변경할 수 없음
     
-```     
-#### 4. 운영체제에 독립적
-    자바 응용프로그램은 운영체제나 하드웨어가 아닌 JVM하고 통신하고 자바로 작성된 프로그램으로 전달 받은 명령을 해당
-    운영체제가 이해할 수 있도록 변환하여 전달
+```
 
+#### 4. 리터럴의 타입과 접미사
 
-## 3. 자바가 쓰이는 곳
- --- 
-    -  PC, 웹, 모바일 애플리케이션
-    -  빅데이터
-    -  게임,과학,소형기기 등
-
-
-## 4. 자바 가상 머신(JVM)이란?
---- 
-    자바를 실행하기 위한 가상 컴퓨터라고 이해 하면 쉽다.
-
-
-## 5. 자바 개발도구(JDK)란?
---- 
-    JDK(Java Development Kit)를 설치하면, JVM 과 자바 클래스 라이브러리 외 자바를 
-    개발하는데 필요한 프로그램들이 설치된다. 
-
-
-## JDK 설치순서
----
-    1. [https://www.oracle.com/java/technologies/javase-downloads.html] 접속
-    2. 사이트 접속하여 모든 쿠키 수락
-    3. 라이센스 동의, 자신의 맞는 운영체제(64bit OR 32bit) 버전 클릭
+  정수형과 실수형에는 여러 타입이 존재하므로, 리터럴에 접미사를 붙여서 타입을 구분한다. 
+<mark> long 타입의 경우 접미사 'l' 또는 'L' </mark> 을 붙이고, 접미사가 없으면 int 타입의 리터럴이 된다. 
 
 
 
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-amwm">종류</th>
+    <th class="tg-amwm">리터럴</th>
+    <th class="tg-amwm">접미사</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0lax">논리형</td>
+    <td class="tg-0lax">false, true</td>
+    <td class="tg-0lax">없음</td>
+  </tr>
+  <tr>
+    <td class="tg-tpo9">정수형</td>
+    <td class="tg-tpo9">123, 0b0101, 077, 0xFF, 100L</td>
+    <td class="tg-tpo9"><span style="font-weight:bold">L</span></td>
+  </tr>
+  <tr>
+    <td class="tg-tpo9">실수형</td>
+    <td class="tg-tpo9">3.14, 3.0e8, 1.4f, 0x1.0p-1</td>
+    <td class="tg-tpo9"><span style="font-weight:bold">f</span>, d</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">문자형</td>
+    <td class="tg-0lax">'A', '1', '/n'</td>
+    <td class="tg-0lax">없음</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">문자열</td>
+    <td class="tg-0lax">"ABC", "1234", "A", "true"</td>
+    <td class="tg-0lax">없음</td>
+  </tr>
+</tbody>
+</table>
 
-## 6. 첫 번째 자바 프로그램 작성하기
---- 
-1. javac.exe - 자바 컴파일러. 사람이 작성한 문장을 기계어로 번역 소스 파일(*.java) 을 클래스 파일(*.class)로 변환
-2. java.exe - 자바 인터프리터. 자바 프로그램(class 파일)을  실행
-3. 클래스 - 자바 프로그램의 단위. 자바 프로그램을 클래스들로 구성
-    
-    ```css
-    class 클래스명 {
 
-    }
-    ```
-4. main메서드 - 자바 프로그램의 시작점. 이메서드 없이 실행 불가.
-    ```css
-    public class array1 {
-        public static void main(String[] args) {
-        
-        }
-    }
-     ```
+```css
+int oct = 010;      //8진수 10, 10진수의 8
+int hex = 0x10;     // 16진수의 10, 10진수로 16
+```
+8진수는 앞에'0' 을 붙이고 16진수는 리터럴 앞에 <mark>접두사 '0x' 또는 '0X' </mark>를 붙인다.
 
 
-## 7. 자바 API 란?
---- 
-### Java API 란?
-    Java로 프로그램을 만드는데 필요한 주요 기능을 미리 만들어서 
-    제공하며 우리는 요청하는 방식으로 데이터만 던져서 원하는 결과
-    값을 받을 수 있다.
+```css
+long big = 100_000_000_000L;
+long hex = 0xFFFF_FFFF_FFFF_FFFFL;
+```
+JDK1.7부터는 중간에 <mark>구분자 '_'</mark>를 넣을 수 있게 되었다.
 
 
-### Java API 문서란?  
-    Java API가 제공하는 기능에 대한 상세한 정보를 제공
-
-- API 문서 링크
-   [https://docs.oracle.com/javase/8/docs/api/index.html?help-doc.html]
- 
-
+```css
+float pi = 3.14f;     //접미사f 대신 F 사용가능 , 생략불가
+double rate = 1.619d; //접미사d 대신 D 사용가능 , 생략가능
+```
+<mark> float 타입은 'f' </mark>를 붙이지 않으면 default double 타입이 된다. 
