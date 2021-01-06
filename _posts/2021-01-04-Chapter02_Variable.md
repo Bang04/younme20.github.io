@@ -10,7 +10,12 @@ share: false
 
 ---
 
-## 1. 화면에 글자 출력하기
+# Chapter2. 변수  (Variable)
+
+
+
+
+#### 화면에 글자 출력하기
 ---
 
 ```css
@@ -23,10 +28,10 @@ share: false
     
 
 
-## 2. 변수 (vriable)란?
+## 1. 변수 (vriable)란?
 --- 
 
-#### 1. 변수의 선언과 저장
+### 1. 변수의 선언과 저장
 
 저장공간, 즉 변수가 필요하다면 먼저 변수를 선언해야한다. 
 
@@ -37,7 +42,7 @@ share: false
     int x = 5; //한 줄로 표현
 ```
 
-#### 2. 변수의 타입
+### 2. 변수의 타입
 
 <!-- | 분류    | 변수의 타입         | 설명          |
 | :------ | :----------------: | ------------------------------------------------------------------: |
@@ -87,12 +92,13 @@ share: false
 ```
 
 
-## 3. 리터럴(literal)
+## 2. 리터럴(literal)
 --- 
 
   원래 12,123,3.14, 'A' 와 같은 값들이 '상수'인데 프로그래밍에서는 상수를 값으  한 번 저장하면 변경할 수 없는 저장공간으로 정의하기때문에 위의 상수와 다르게 불러야만 해서 **리터럴**이라는 용어를 사용한다. 
 
 
+###  1. 상수와 리터럴
   - **변수(Variable)**  하나의 값을 저장하기 위한 공간
 
   - **상수(Constant)**  값을 한번만 저장할 수 있는 공간
@@ -107,7 +113,7 @@ share: false
     
 ```
 
-#### 4. 리터럴의 타입과 접미사
+### 2. 리터럴의 타입과 접미사
 
   정수형과 실수형에는 여러 타입이 존재하므로, 리터럴에 접미사를 붙여서 타입을 구분한다. 
 <mark> long 타입의 경우 접미사 'l' 또는 'L' </mark> 을 붙이고, 접미사가 없으면 int 타입의 리터럴이 된다. 
@@ -152,22 +158,207 @@ share: false
 </table>
 
 
+8진수는 앞에'0' 을 붙이고 16진수는 리터럴 앞에 <mark>접두사 '0x' 또는 '0X' </mark>를 붙인다.
+
 ```css
 int oct = 010;      //8진수 10, 10진수의 8
 int hex = 0x10;     // 16진수의 10, 10진수로 16
 ```
-8진수는 앞에'0' 을 붙이고 16진수는 리터럴 앞에 <mark>접두사 '0x' 또는 '0X' </mark>를 붙인다.
 
+
+JDK1.7부터는 중간에 <mark>구분자 '_'</mark>를 넣을 수 있게 되었다.
 
 ```css
 long big = 100_000_000_000L;
 long hex = 0xFFFF_FFFF_FFFF_FFFFL;
 ```
-JDK1.7부터는 중간에 <mark>구분자 '_'</mark>를 넣을 수 있게 되었다.
 
 
+<mark> float 타입은 'f' </mark>를 붙이지 않으면 default double 타입이 된다. 
 ```css
 float pi = 3.14f;     //접미사f 대신 F 사용가능 , 생략불가
 double rate = 1.619d; //접미사d 대신 D 사용가능 , 생략가능
 ```
-<mark> float 타입은 'f' </mark>를 붙이지 않으면 default double 타입이 된다. 
+
+### 3. 문자 리터럴의 문자열 리터럴
+```css
+  char ch = 'J'; //문자 한 개 이상 저장할 수 없다.
+  String name ="Java" //문자열을 저장
+
+
+  String str =""; //ok, 초기화
+  char ch = ''; //에러, 하나의 문자열을 넣어야한다.
+  char ch = ' ';//ok, 공백으로 초기화
+```
+### 4. 문자열 결합
+숫자 뿐만 아니라 아래와같이 두 문자열을 합칠 때도 덧셈(+)을 사용할 수 있다.
+```css
+  System.out.println(7 + " ");     //7
+  System.out.println(" " + 7);     // 7
+  System.out.println(7 + "");      //7
+  System.out.println("" + "");     //
+  System.out.println(7 + 7 + " "); //14
+  System.out.println(" " + 7 + 7); //77
+
+```
+    
+## 3. 기본형(Primitive Type) 종류와 크기
+
+    기본형이란 논리형, 문자형,정수형,실수형 계산을 위한 실제 값을 저장하고 
+    참조형은 객체의 주소를 저장한다. (기본형 외 나머지 타입들을 가리킴)
+
+### 1. 기본형(Primitive Type) 종류
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-1wig">종류\크기</th>
+    <th class="tg-1wig">1byte</th>
+    <th class="tg-1wig">2byte</th>
+    <th class="tg-1wig">4byte</th>
+    <th class="tg-1wig">8byte</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-baqh">논리형</td>
+    <td class="tg-baqh">boolean</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">문자형</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">char</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh"></td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">정수형</td>
+    <td class="tg-baqh">byte</td>
+    <td class="tg-baqh">shout</td>
+    <td class="tg-baqh">int</td>
+    <td class="tg-baqh">long</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">실수형</td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh"></td>
+    <td class="tg-baqh">float</td>
+    <td class="tg-baqh">double</td>
+  </tr>
+</tbody>
+</table>
+
+> 논리형 - true와 false 중 하나를 값으로 가지고 조건식 논리적 계산에 사용
+
+> 문자형 - char 문자를 저장하는데 사용, 변수 당 하나의 문자만 저장 가능
+
+> 정수형 - 정수 값을 저장하는데 사용, 주로 int와 long이며 shout은 c언어와의 호환을 위해 추가(잘안쓰임)
+
+> 실수형 - 실수 값을 저장하는데 사용, float, double이 있다.
+
+### 2. 기본형(Primitive Type) 저장 범위
+
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-baqh">자료형</th>
+    <th class="tg-baqh">저장 가능한 값의 범위</th>
+    <th class="tg-baqh">bit</th>
+    <th class="tg-baqh">byte</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-baqh">Boolean</td>
+    <td class="tg-0lax">false, true</td>
+    <td class="tg-baqh">8</td>
+    <td class="tg-baqh">1</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">char</td>
+    <td class="tg-0lax">0 ~ 35535 </td>
+    <td class="tg-baqh">16</td>
+    <td class="tg-baqh">2</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">byte</td>
+    <td class="tg-0lax">-128 ~ 127</td>
+    <td class="tg-baqh">8</td>
+    <td class="tg-baqh">1</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">short</td>
+    <td class="tg-0lax">-32768 ~ 32767</td>
+    <td class="tg-baqh">16</td>
+    <td class="tg-baqh">2</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">int</td>
+    <td class="tg-0lax">-2,147,483,648 ~ 2.147.483.647(20억)</td>
+    <td class="tg-baqh">32</td>
+    <td class="tg-baqh">4</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">long</td>
+    <td class="tg-0lax">-9.223.372.036.854.775.808 ~ 9223.372.036.854.775.807</td>
+    <td class="tg-baqh">64</td>
+    <td class="tg-baqh">8</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">float</td>
+    <td class="tg-0lax">1.4E-45 ~ 3.4E38</td>
+    <td class="tg-baqh">32</td>
+    <td class="tg-baqh">4</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">double</td>
+    <td class="tg-0lax">4.9E-324 ~ 1.8E308</td>
+    <td class="tg-baqh">64</td>
+    <td class="tg-baqh">8</td>
+  </tr>
+</tbody>
+</table>
+
+
+## 4. printf를 이용한 출력
+printf()는 '지시자'를 통해 변수의 값을 여러 가지 형식으로 반환하여 출력하는 기능을 가지고 있다. 정수형 변수에 저장된 값을 10진 정수로 출력할 때는 지시자 '%d'를 사용한다.
+
+```css
+  System.out.println("age:%d", age); //age 변수명
+  System.out.println("age:%d", 14);  //14 출력
+
+```
+
+### 1. 자주 사용하는 지시자
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-amwm">지시자</th>
+    <th class="tg-amwm">설명</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-baqh">%d</td>
+    <td class="tg-0lax">10진 정수의 형식으로 출력</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">%x</td>
+    <td class="tg-0lax">16진 정수의 형식으로 출력</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">%f</td>
+    <td class="tg-0lax">부동 소수점의 형식으로 출력</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">%c</td>
+    <td class="tg-0lax">문자로 출력</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">%s</td>
+    <td class="tg-0lax">문자열로 출력</td>
+  </tr>
+</tbody>
+</table>
