@@ -2,8 +2,8 @@
 layout: post
 title: "Chapter02. 변수"
 description: "자바의 기본 핵심을 요약 설명 해준다."
-date: 2021-01-04
-tags: [JAVA, ]
+date: 2021-01-12
+tags: [print, Scanner, 상수, 리터럴  ]
 comments: true
 share: false
 ---
@@ -331,7 +331,8 @@ printf()는 '지시자'를 통해 변수의 값을 여러 가지 형식으로 �
 
 ```
 
-### 1. 자주 사용하는 지시자
+
+자주 사용하는 지시자 표
 <table class="tg">
 <thead>
   <tr>
@@ -342,23 +343,111 @@ printf()는 '지시자'를 통해 변수의 값을 여러 가지 형식으로 �
 <tbody>
   <tr>
     <td class="tg-baqh">%d</td>
-    <td class="tg-0lax">10진 정수의 형식으로 출력</td>
+    <td class="tg-0lax">10진(<mark> d </mark>ecimal) 정수의 형식으로 출력</td>
   </tr>
   <tr>
     <td class="tg-baqh">%x</td>
-    <td class="tg-0lax">16진 정수의 형식으로 출력</td>
+    <td class="tg-0lax">16진(he<mark> x </mark>a -decimal) 정수의 형식으로 출력</td>
   </tr>
   <tr>
     <td class="tg-baqh">%f</td>
-    <td class="tg-0lax">부동 소수점의 형식으로 출력</td>
+    <td class="tg-0lax">부동 소수점(<mark> f </mark>loating-point)의 형식으로 출력</td>
   </tr>
   <tr>
     <td class="tg-baqh">%c</td>
-    <td class="tg-0lax">문자로 출력</td>
+    <td class="tg-0lax">문자(<mark> c </mark>haracter)로 출력</td>
   </tr>
   <tr>
     <td class="tg-baqh">%s</td>
-    <td class="tg-0lax">문자열로 출력</td>
+    <td class="tg-0lax">문자열(<mark> s </mark>tring)로 출력</td>
   </tr>
 </tbody>
 </table>
+
+### 1. print 예제 
+> println()의 단점 - 출력형식 지정불가
+1. 실수의 자리수 조정불가 - 소수점 n자리만 출력하려면?
+```css
+System.out.println(10.0/3); //3.3333.. 
+```
+2. 10진수로만 출력된다. - 8진수,16진수로 출력하려면?
+```css
+System.out.println(10x1A) //26(10진수로 출력)
+```
+> printf()로 출력형식 지정가능 
+1. 정수를 10진수,8진수, 16진수로 출력
+```css
+System.out.printf("%.2f", 10.0/3); //3.33(소수점 둘째자리까지 출력)
+System.out.printf("%d", 10x1A); //26
+System.out.printf("%x", 10x1A); //1A
+System.out.printf("%s", Integer.toBinaryString(15)); //1111 2진수로 출력
+```
+2. 8진수와 16진수에 접두사 붙이지
+```css
+System.out.printf("%#0", 15) //017
+System.out.printf("%#x", 15) //0xf
+System.out.printf("%#X", 15) //0XF
+```
+3. 실수 출력을 위한 지시자 %f - 지수형식 (%e) ,간략한 형식($g))
+```css
+float f = 123.456789f;
+System.out.printf("%f", f) //123.456787
+System.out.printf("%e", f) //1.2345678e+02
+```
+
+
+
+###  2. printf()의 지시자
+```css
+System.out.printf("[%5d %n]", 10) //[   10] 공백3칸
+System.out.printf("[%-5d %n]", 10) //[10   ] 공백 뒤에 3칸
+System.out.printf("[%05d %n]", 10) //[00010] 빈자리를 '0'으로 채움
+```
+> %전체자릿수.소수점아래자릿f
+```css
+//전체 14자 중 소수점 아래 10자리
+System.out.printf(d=%14.10f%n", d); //  1.02345678900
+```
+* 지정된 자릿수보다 큰 값을 넣게되면 값이 잘리지않고 저장 된 값을 모두 출력한다. 
+* 소수점아래자릿수가 입력된 값보다 작으면 지정한만큼 잘려서 출력된다.단, 값은 그대로 저장이 되어있다.
+
+
+## 3. Scanner
+### Scanner 란?
+
+    화면으로부터 데이터를 입력받는 기능을 제공하는 클래스
+
+###  Scanner 사용방법
+
+1. import 문 추가
+```css
+ impornt java.util.Scanner;
+```
+2. Scanner 객체 생성하기
+```css
+Scanner scanner = new Scanner(System.in);
+```
+3.  Scanner 객체 이용하기
+```css
+int num = scanner .nextInt();  //사용자에게 입력한 숫자를 저장
+
+// 문자값을 숫자로 변경할때
+String input = scanner.nextLine();  
+int num = Integer.pareInt(input);
+```
+
+4. 정수형의 오버플로우
+
+계수기를 예로 들어 4자리값이 최대인데 만약 "9999"에서 한번 더 누르면 "0000"이 되면서 오버플로우가 발생하는데
+다시 1씩 증가한다.
+  
+9999+1  >  0000
+최대값         최소값
+0000-1   >  9999
+최소값         최대값
+
+ ![ch2_overflow.png](https://github.com/younme20/younme20.github.io/blob/master/assets/images/ch2_overflow.png?raw=true)
+
+부호없는 정수 (4bit)의 경우 표현범위가 '0~15' 이므로 이 값이 계속 반복되고, 부호있는 정수(4bit)의 경우 표현범위가 '-8~7' 이브로 이 값이 무한히 반복된다. 
+
+ ![ch2_ex2.JPG](https://github.com/younme20/younme20.github.io/blob/master/assets/images/ch2_ex2.JPG?raw=true)
